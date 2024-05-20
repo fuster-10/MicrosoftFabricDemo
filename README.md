@@ -30,4 +30,4 @@ En resumen, las transformaciones aplicadas en este punto son:
 - Guardado de cada fichero transformado en formato _.parquet_ en la capa CURATED.
 
 ## Paso 3: Capa final - Consumption
-En este punto, realizaremos las últimas transformaciones a aplicar sobre los datos.
+En este punto, realizaremos las últimas transformaciones a aplicar sobre los datos. En cada caso, realizaremos
