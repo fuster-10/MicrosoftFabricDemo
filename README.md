@@ -8,10 +8,10 @@ Para simular los datos disponibles en el operacional, partiremos de la BBDD disp
 https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/adventure-works/data-warehouse-install-script
 
 Donde las archivos que utilizaremos serán:
-- DimProduct.csv
-- DimDate.csv
-- DimSalesTerritory.csv
-- DimSalesTerritory.csv
-- DimCustomer.csv
-- FactInternetSales.csv
+- DimProduct.csv (Dimensión)
+- DimDate.csv (Dimensión)
+- DimSalesTerritory.csv (Dimensión)
+- DimSalesTerritory.csv (Dimensión)
+- DimCustomer.csv (Dimensión)
+- FactInternetSales.csv (Hecho)
 
