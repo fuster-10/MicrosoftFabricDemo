@@ -332,6 +332,25 @@ Como buena práctica, es recomendable el uso de la opción 1. No obstante, la op
 Par ello, accederemos a la opción "Punto de conexión de análisis SQL":
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/394fcfe5-f950-4407-b2bc-c7558e74a4d5)
 
+En esta pestaña se puede observar lo siguiente:
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/f7217122-7d33-4eb3-a98d-5b4a8daf1b5a)
+
+Tras la creación de las tabla delta, Microsoft Fabric crea de forma automática un SQL end point (sólo lectura) al que poder conectarte y realizar queries a los datos generados. Hay tres pestañas disponibles:
+- Datos: Visualizamos los datos disponibles.
+- Consulta: Escribimos consultas a los datos.
+- Modelo: Construimos el modelo semántico de Power BI.
+
+Para pasar a establecer las relaciones entre nuestras tablas, haremos click en Creación de informes -> Administrar modelo semántico predeterminado. En este apartado, estableremos las relaciones entre nuestras tablas, de acuerdo a la cardinalidad con la que se encuentren relacionadas, por lo tanto, crearemos:
+- Relación 1:N entre dim_date y fact_internet_sales mediante los campos DateKey y OrderDateKey.
+- Relación 1:N entre dim_product y fact_internet_sales mediante el campo Product_Key.
+- Relación 1:N entre dim_sales_territory y fact_internet_sales mediante el campo Sales_Territory_Key.
+- Relación 1:N entre dim_customer y fact_internet_sales mediante el campo Customer_Key.
+- Relación 1:N entre dim_date y fact_summary mediante el campo DateKey.
+- Relación 1:N entre dim_product y fact_summary mediante el campo Product_Key.
+- Relación 1:N entre dim_sales_territory y fact_summary mediante el campo Sales_Territory_Key.
+- Relación 1:N entre dim_customer y fact_summary mediante el campo Customer_Key.
+
+
 
 
 
