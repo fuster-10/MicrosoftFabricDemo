@@ -21,12 +21,13 @@ Como parte de las buenas prácticas dentro de Fabric para realizar la ingesta, s
 El Pipeline desarrollado para realizar esta acción, se encuentra ubicado en la siguiente dirección (desafortunadamente, no se puede visualiazar el contenido del pipeline sin tener acceso al worksapce. En caso de querer conocer más detealle, por favor, contactadme por privado):
 https://app.fabric.microsoft.com/groups/61830d7c-c332-46d5-95d3-249737c2e475/pipelines/d673ab56-e5d7-4996-aa02-913107e44561?experience=data-engineering
 
-## Paso 3: Primera capa de transformación: Curated
-En esta fase, se aplicarán unas sencillas tranformaciones a los datos usando PySpark. Las mismas están disponibles en el notebook [Demo_Fabric_Curated] (https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Demo_Fabric_Curated.ipynb).
+## Paso 3: Capa intermedia - Curated
+En esta fase, se aplicarán unas sencillas tranformaciones a los datos usando PySpark. Las mismas están disponibles en el notebook Demo_Fabric_Curated (https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Demo_Fabric_Curated.ipynb)
 
-En resumen, las transformaciones aplicadas en este punto, son:
+En resumen, las transformaciones aplicadas en este punto son:
 - Seleccion de campos deseados de cada fichero.
 - Conversión al tipo de dato correcto.
-- Guardado de cada fichero transformado en formato _parquet_ en la capa CURATED.
+- Guardado de cada fichero transformado en formato _.parquet_ en la capa CURATED.
 
-## Paso 3: Primera capa de transformación: Curated
+## Paso 3: Capa final - Consumption
+En este punto, realizaremos las últimas transformaciones a aplicar sobre los datos.
