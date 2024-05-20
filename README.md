@@ -11,7 +11,6 @@ Donde las archivos que utilizaremos serán:
 - DimProduct.csv (Dimensión)
 - DimDate.csv (Dimensión)
 - DimSalesTerritory.csv (Dimensión)
-- DimSalesTerritory.csv (Dimensión)
 - DimCustomer.csv (Dimensión)
 - FactInternetSales.csv (Hecho)
 
@@ -27,7 +26,23 @@ En esta fase, se aplicarán unas sencillas tranformaciones a los datos usando Py
 En resumen, las transformaciones aplicadas en este punto son:
 - Seleccion de campos deseados de cada fichero.
 - Conversión al tipo de dato correcto.
+- Generación de columnas calculadas para determinadas entidades.
 - Guardado de cada fichero transformado en formato _.parquet_ en la capa CURATED.
 
 ## Paso 3: Capa final - Consumption
-En este punto, realizaremos las últimas transformaciones a aplicar sobre los datos. En cada caso, realizaremos
+En este punto, como operación final a aplicar sobre los datos, generaremos una versión agregada de la tabla _FactInternetSales_, llamada _FactSalesSummary_. 
+
+Nuestra tabla _FactInternetSales_ contiene los siguientes campos:
+- ProductKey: integer.
+- OrderDateKey: integer.
+- DueDateKey: integer.
+- ShipDateKey: integer.
+- CustomerKey: integer.
+- CurrencyKey: integer.
+- SalesTerritoryKey: integer.
+- SalesOrderNumber: string.
+- OrderQuantity: integer.
+- UnitPrice: double.
+- TotalSales: double.
+
+
