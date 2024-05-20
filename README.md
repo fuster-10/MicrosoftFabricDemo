@@ -15,3 +15,7 @@ Donde las archivos que utilizaremos serán:
 - DimCustomer.csv (Dimensión)
 - FactInternetSales.csv (Hecho)
 
+## Paso 2: Extracción inicial de los datos
+Como parte de las buenas prácticas dentro de Fabric, se recomienda aplicar una operación de "Copy data" con un Pipeline de Data Factory para generar una extracción inicial de los datos, desde el origen a nuestro Lakehouse. Esto generará una copia inicial de los datos en la capa de RAW. Siguiendo la arquitectura "Medallion".
+
+
