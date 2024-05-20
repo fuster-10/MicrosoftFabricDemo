@@ -319,5 +319,9 @@ df_dim_date.write.format("delta").mode("overwrite").option("mergeSchema", "true"
 df_dim_product.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_product")
 df_dim_sales_territory.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_sales_territory")
 ```
+En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric":
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/5afa6523-9fa7-43af-836b-ab6892c55c1d)
+
+
 
 
