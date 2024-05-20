@@ -244,5 +244,80 @@ Con la agregación realizada, pasaremos a disponer de la siguiente tabla:
 
 Es decir, pasaremos de tener el detalle de nuestras ventas online, determinadas por el campo _SalesOrderNumber_, a disponer de una tabla agregada a nivel de _ProductKey_, _CustomerKey_, _SalesTerritoryKey_, _OrderYear_, y _OrderMonth_. Además, se crearán las tablas deltas correspondientes a cada una de las entidades tratadas. 
 
+### Importación inicial de funciones
+```python
+from pyspark.sql.types import *
+from pyspark.sql.functions import concat, lit, datediff, current_date, when, col, substring, sum, length, countDistinct
+```
+### FactSalesSummary
+```python
+df_fact_summary = spark.read.format("parquet").load("Files/CURATED/FactInternetSales.parquet")
+
+df_fact_summary = df_fact_summary.withColumn(
+    'OrderYear', substring(df_fact_summary['OrderDateKey'],0,4).cast('integer')
+).withColumn(
+    'OrderMonth', substring(df_fact_summary['OrderDateKey'],5,2).cast('integer')
+)
+
+df_fact_summary = df_fact_summary.groupBy('ProductKey', 'CustomerKey', 'SalesTerritoryKey', 'OrderYear', 'OrderMonth') \
+    .agg(sum('TotalSales').alias('TotalSalesAmount'), sum('OrderQuantity').alias('TotalItems'), countDistinct('SalesOrderNumber').alias('TotalOrders'))
+
+df_fact_summary = df_fact_summary.withColumn(
+    'DateKey', when(length(df_fact_summary['OrderMonth'].cast('string'))==2,concat(df_fact_summary['OrderYear'].cast('string'),df_fact_summary['OrderMonth'].cast('string'),lit('01'))).otherwise(concat(df_fact_summary['OrderYear'].cast('string'),lit('0'),df_fact_summary['OrderMonth'].cast('string'),lit('01'))).cast('integer')
+)
+
+df_fact_summary.printSchema() 
+display(df_fact_summary)
+
+
+df_fact_summary.write.mode("overwrite").parquet('Files/CONSUMPTION/FactSalesSummary.parquet')
+print ("FactSalesSummary agregada y guardada")
+
+```
+### FactInternetSales
+```python
+df_fact_internet_sales = spark.read.format("parquet").load("Files/CURATED/FactInternetSales.parquet")
+
+df_fact_internet_sales.write.mode("overwrite").parquet('Files/CONSUMPTION/FactInternetSales.parquet')
+print ("FactInternetSales guardada en capa CONSUMPTION")
+
+```
+### DimCustomer
+```python
+df_dim_customer = spark.read.format("parquet").load("Files/CURATED/DimCustomer.parquet")
+
+df_dim_customer.write.mode("overwrite").parquet('Files/CONSUMPTION/DimCustomer.parquet')
+print ("DimCustomer guardada en capa CONSUMPTION")
+```
+### DimDate
+```python
+df_dim_date = spark.read.format("parquet").load("Files/CURATED/DimDate.parquet")
+
+df_dim_date.write.mode("overwrite").parquet('Files/CONSUMPTION/DimDate.parquet')
+print ("DimDate guardada en capa CONSUMPTION")
+```
+### DimProduct
+```python
+df_dim_product = spark.read.format("parquet").load("Files/CURATED/DimProduct.parquet")
+
+df_dim_product.write.mode("overwrite").parquet('Files/CONSUMPTION/DimProduct.parquet')
+print ("DimProduct guardada en capa CONSUMPTION")
+```
+### DimSalesTerritory
+```python
+df_dim_sales_territory = spark.read.format("parquet").load("Files/CURATED/DimSalesTerritory.parquet")
+
+df_dim_sales_territory.write.mode("overwrite").parquet('Files/CONSUMPTION/DimSalesTerritory.parquet')
+print ("DimSalesTerritory guardada en capa CONSUMPTION")
+```
+### Creación de las tablas delta
+```python
+df_fact_summary.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("fact_summary")
+df_fact_internet_sales.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("fact_internet_sales")
+df_dim_customer.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_customer")
+df_dim_date.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_date")
+df_dim_product.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_product")
+df_dim_sales_territory.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_sales_territory")
+```
 
 
