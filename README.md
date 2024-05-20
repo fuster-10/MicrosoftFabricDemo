@@ -32,7 +32,7 @@ En resumen, las transformaciones aplicadas en este punto son:
 ## Paso 3: Capa final - Consumption
 En este punto, como operación final a aplicar sobre los datos, generaremos una versión agregada de la tabla _FactInternetSales_, llamada _FactSalesSummary_. 
 
-Las operaciones realizadas están disponibles en el notebook [Demo_Fabric_Consumption] ()
+Las operaciones realizadas están disponibles en el notebook [Demo_Fabric_Consumption] (https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Demo_Fabric_Consumption.ipynb)
 
 Nuestra tabla _FactInternetSales_ contiene los siguientes campos:
 - ProductKey: integer.
