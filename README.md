@@ -29,7 +29,7 @@ En resumen, las transformaciones aplicadas en este punto son:
 - Generación de columnas calculadas para determinadas entidades.
 - Guardado de cada fichero transformado en formato _.parquet_ en la capa CURATED.
   
-### Importación inicial
+### Importación inicial de funciones
 ```python
 from pyspark.sql.types import *
 from pyspark.sql.functions import concat, lit, datediff, current_date, when, col, substring, sum, length, countDistinct
