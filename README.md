@@ -45,4 +45,18 @@ Nuestra tabla _FactInternetSales_ contiene los siguientes campos:
 - UnitPrice: double.
 - TotalSales: double.
 
+Con la agregación realizada, pasaremos a disponer de la siguiente tabla:
+- ProductKey: integer.
+- CustomerKey: integer.
+- SalesTerritoryKey: integer.
+- OrderYear: integer.
+- OrderMonth: integer.
+- TotalSalesAmount: double (sum('TotalSales')).
+- TotalItems: long (sum('OrderQuantity')).
+- TotalOrders: long (countDistinct('SalesOrderNumber')).
+- DateKey: integer.
+
+Es decir, pasaremos de tener el detalle de nuestras ventas online, determinadas por el campo _SalesOrderNumber_, a disponer de una tabla agregada a nivel de _ProductKey_, _CustomerKey_, _SalesTerritoryKey_, _OrderYear_,¡ y _OrderMonth_. Además, se crearán las tablas deltas correspondientes a cada una de las entidades tratadas. 
+
+
 
