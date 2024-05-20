@@ -1,7 +1,7 @@
 # Microsoft Fabric Demo
 Bienvenidos a la Demo de Microsoft Fabric. Este README.md describe los pasos seguidos durante la demo. Se recomienda seguir este documento al mismo tiempo que la presentación para sacarle el máximo partido.
 
-Para el ejercicio escogido, simularemos la existencia de una tienda online de bicicletas, "Bluetab Bikes". Desde negocio, se ha solicitado al equipo de Analítica de Datos que desarrolle un dashboard en Power BI que permita analizar las ventas de las bicicletas por Región. Además, quieren que la solución se abordada mediante Microsoft Fabric.
+Para el ejercicio escogido, simularemos la existencia de una tienda online de bicicletas, "Bluetab Bikes". Desde la dirección, se ha solicitado al equipo de Analítica de Datos que desarrolle un dashboard en Power BI que permita analizar las ventas de las bicicletas por Región. Además, quieren que la solución se abordada mediante Microsoft Fabric.
 
 ## Paso 1: Origen de datos (operacional)
 Para simular los datos disponibles en el operacional, partiremos de la BBDD disponible en el siguiente repo:
@@ -323,6 +323,17 @@ En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric"
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/5afa6523-9fa7-43af-836b-ab6892c55c1d)
 
 ## Paso 5: Creación del modelo semántico en Power BI
+Enhorabuena, ya estamos cerca de poder finalizar nuestro proyecto y reportar a la Dirección la información que nos había solicitado. Sólo queda un último punto antes de poder comenzar a desarrollar nuestra informe de Power BI: *Construir el modeo semántico*. Esto es posible, debido a que ya tenemos en disposición las tablas finales con las que poder construir el modelo de datos a usar en el dashboard. Sin embargo, para abordar esta operación podemos optar por dos alternativas:
+- Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
+- Opción 2: Definición de las relaciones del modelo semántico a través Power BI Desktop.
+
+Como buena práctica, es recomendable el uso de la opción 1. No obstante, la opción 2, es posible y será explicada en la siguiente demo.
+### Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
+Par ello, accederemos a la opción "Punto de conexión de análisis SQL":
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/394fcfe5-f950-4407-b2bc-c7558e74a4d5)
+
+
+
 
 
 
