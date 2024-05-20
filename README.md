@@ -1,7 +1,13 @@
 # Microsoft Fabric Demo
 Bienvenidos a la Demo de Microsoft Fabric. Este README.md describe los pasos seguidos durante la demo. Se recomienda seguir este documento al mismo tiempo que la presentación para sacarle el máximo partido.
 
-Para el ejercicio escogido, simularemos la existencia de una tienda online de bicicletas, "Bluetab Bikes". Desde la dirección, se ha solicitado al equipo de Analítica de Datos que desarrolle un dashboard en Power BI que permita analizar las ventas de las bicicletas por Región. Además, quieren que la solución se abordada mediante Microsoft Fabric.
+Para el ejercicio escogido, simularemos la existencia de una tienda online de bicicletas, "Bluetab Bikes". Desde Dirección, se ha solicitado al equipo de Analítica de Datos que desarrolle un dashboard en Power BI que permita analizar las ventas de las bicicletas por Región. Además, quieren que la solución se abordada mediante Microsoft Fabric.
+
+En concreto, quieren que demos respuesta a las siguiente preguntas:
+- ¿Cuál fue el Pais con más ventas en el año 2014?
+- Dentro de ese Pais, ¿cuál fue la Región con más ventas y cuál fue el producto que mayor volumen de negocio produjo?
+- Para el segundo pais con mayor volumen de negocio, ¿coinciden los productos más vendidos con los del país anterior?
+- Para el año 2013, en Europa, ¿cuál es el mejor periodo para la venta de bicicletas?¿a qué podría deberse este motivo?
 
 ## Paso 1: Origen de datos (operacional)
 Para simular los datos disponibles en el operacional, partiremos de la BBDD disponible en el siguiente repo:
