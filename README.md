@@ -25,6 +25,184 @@ https://app.fabric.microsoft.com/groups/61830d7c-c332-46d5-95d3-249737c2e475/pip
 from pyspark.sql.types import *
 from pyspark.sql.functions import concat, lit, datediff, current_date, when, col, substring, sum, length, countDistinct
 ```
+### DimProduct
+```python
+df_dim_product = spark.read.format("parquet").load("Files/RAW/DimProduct.parquet")
+
+df_dim_product = df_dim_product.withColumnsRenamed(
+    {
+        'Prop_0': 'ProductKey', 
+        'Prop_5': 'ProductName'
+    })
+
+df_dim_product = df_dim_product.withColumn(
+    'ProductKey', df_dim_product['ProductKey'].cast('integer')
+)
+
+df_dim_product = df_dim_product['ProductKey','ProductName']
+
+df_dim_product.printSchema() 
+display(df_dim_product)
+
+df_dim_product.write.mode("overwrite").parquet('Files/CURATED/DimProduct.parquet')
+print ("Dimensión producto transformada y guardada")
+
+```
+### DimDate
+```python
+# Date
+df_dim_date = spark.read.format("parquet").load("Files/RAW/DimDate.parquet")
+
+df_dim_date = df_dim_date['Prop_0','Prop_1','Prop_2','Prop_3','Prop_6','Prop_9','Prop_12','Prop_14']
+
+df_dim_date = df_dim_date.withColumnsRenamed(
+    {
+        'Prop_0': 'DateKey', 
+        'Prop_1': 'Date',
+        'Prop_2': 'WeekDayNumber',
+        'Prop_3': 'WeekDayName',
+        'Prop_6': 'MonthDayNumber',
+        'Prop_9': 'MonthName',
+        'Prop_12': 'MonthNumber',
+        'Prop_14': 'YearNumber'
+    })
+
+df_dim_date = df_dim_date.withColumn(
+   'DateKey', df_dim_date['DateKey'].cast('integer')
+).withColumn(
+   'Date', df_dim_date['Date'].cast('date')
+).withColumn(
+   'WeekDayNumber', df_dim_date['WeekDayNumber'].cast('integer')
+).withColumn(
+   'MonthDayNumber', df_dim_date['MonthDayNumber'].cast('integer')
+).withColumn(
+   'MonthNumber', df_dim_date['MonthNumber'].cast('integer')
+).withColumn(
+   'YearNumber', df_dim_date['YearNumber'].cast('integer')
+)
+
+df_dim_date.printSchema() 
+display(df_dim_date)
+
+df_dim_date.write.mode("overwrite").parquet('Files/CURATED/DimDate.parquet')
+print ("Dimensión Calendario transformada y guardada")
+```
+### DimSalesTerritory
+```python
+df_dim_sales_territory = spark.read.format("parquet").option("header","false").load("Files/RAW/DimSalesTerritory.parquet")
+df_dim_sales_territory.printSchema() 
+
+df_dim_sales_territory = df_dim_sales_territory.drop('Prop_1')
+df_dim_sales_territory = df_dim_sales_territory.drop('Prop_5')
+
+df_dim_sales_territory = df_dim_sales_territory.withColumnsRenamed(
+    {
+        'Prop_0': 'SalesTerritoryKey', 
+        'Prop_2': 'SalesTerritoryRegion',
+        'Prop_3': 'SalesTerritoryCountry',
+        'Prop_4': 'SalesTerritoryGroup',
+    })
+
+df_dim_sales_territory = df_dim_sales_territory.withColumn(
+    'SalesTerritoryKey', df_dim_sales_territory['SalesTerritoryKey'].cast('integer')
+)
+
+df_dim_sales_territory.printSchema() 
+display(df_dim_sales_territory)
+
+df_dim_sales_territory.write.mode("overwrite").parquet('Files/CURATED/DimSalesTerritory.parquet')
+print ("Dimensión SalesTerritory transformada y guardada")
+```
+### DimCustomer
+```python
+
+
+df_dim_customer = spark.read.format("parquet").load("Files/RAW/DimCustomer.parquet")
+
+df_dim_customer = df_dim_customer['Prop_0','Prop_4','Prop_6','Prop_8','Prop_9','Prop_11','Prop_13']
+
+df_dim_customer.printSchema() 
+
+df_dim_customer = df_dim_customer.withColumnsRenamed(
+    {
+        'Prop_0': 'CustomerKey', 
+        'Prop_4': 'FirstName',
+        'Prop_6': 'LastName',
+        'Prop_8': 'BirthDate',
+        'Prop_9': 'CivilState',
+        'Prop_11': 'Gender',
+        'Prop_13': 'YearlyIncome'
+    })
+
+df_dim_customer = df_dim_customer.withColumn(
+    'CustomerKey', df_dim_customer['CustomerKey'].cast('integer')
+).withColumn(
+   'FullName', concat(df_dim_customer['FirstName'],lit(" "),df_dim_customer['LastName'])
+).withColumn(
+   'BirthDate', df_dim_customer['BirthDate'].cast('date')
+).withColumn(
+   'YearlyIncome', df_dim_customer['YearlyIncome'].cast('double')
+).withColumn(
+   'Age', when(col('BirthDate').isNotNull(), datediff(current_date(), col('BirthDate'))/365)
+
+)
+
+df_dim_customer.printSchema() 
+display(df_dim_customer)
+
+df_dim_customer.write.mode("overwrite").parquet('Files/CURATED/DimCustomer.parquet')
+print ("Dimensión Customer transformada y guardada")
+```
+### FactInternetSales
+```python
+df_fact_sales = spark.read.format("parquet").load("Files/RAW/FactInternetSales.parquet")
+
+df_fact_sales = df_fact_sales['Prop_0','Prop_1','Prop_2','Prop_3','Prop_4','Prop_6','Prop_7','Prop_8','Prop_11','Prop_12']
+
+df_fact_sales.printSchema() 
+
+df_fact_sales = df_fact_sales.withColumnsRenamed(
+    {
+        'Prop_0': 'ProductKey', 
+        'Prop_1': 'OrderDateKey',
+        'Prop_2': 'DueDateKey',
+        'Prop_3': 'ShipDateKey',
+        'Prop_4': 'CustomerKey',
+        'Prop_6': 'CurrencyKey',
+        'Prop_7': 'SalesTerritoryKey',
+        'Prop_8': 'SalesOrderNumber',
+        'Prop_11': 'OrderQuantity',
+        'Prop_12': 'UnitPrice'
+    })
+
+df_fact_sales = df_fact_sales.withColumn(
+    'ProductKey', df_fact_sales['ProductKey'].cast('integer')
+).withColumn(
+    'OrderDateKey', df_fact_sales['OrderDateKey'].cast('integer')
+).withColumn(
+    'DueDateKey', df_fact_sales['DueDateKey'].cast('integer')
+).withColumn(
+    'ShipDateKey', df_fact_sales['ShipDateKey'].cast('integer')
+).withColumn(
+    'CustomerKey', df_fact_sales['CustomerKey'].cast('integer')
+).withColumn(
+    'CurrencyKey', df_fact_sales['CurrencyKey'].cast('integer')
+).withColumn(
+    'SalesTerritoryKey', df_fact_sales['SalesTerritoryKey'].cast('integer')
+).withColumn(
+    'OrderQuantity', df_fact_sales['OrderQuantity'].cast('integer')
+).withColumn(
+    'UnitPrice', df_fact_sales['UnitPrice'].cast('double')
+).withColumn(
+    'TotalSales', col('OrderQuantity') * col('UnitPrice')
+)
+
+df_fact_sales.printSchema() 
+display(df_fact_sales)
+
+df_fact_sales.write.mode("overwrite").parquet('Files/CURATED/FactInternetSales.parquet')
+print ("Fact Sales transformada y guardada")
+```
 
 ## Paso 3: Capa intermedia - Curated
 En esta fase, se aplicarán unas sencillas tranformaciones a los datos usando PySpark. Las mismas están disponibles en el notebook Demo_Fabric_Curated (https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Demo_Fabric_Curated.ipynb)
