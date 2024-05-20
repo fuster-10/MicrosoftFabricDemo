@@ -213,7 +213,7 @@ df_fact_sales.write.mode("overwrite").parquet('Files/CURATED/FactInternetSales.p
 print ("Fact Sales transformada y guardada")
 ```
 
-## Paso 3: Capa final - Consumption
+## Paso 4: Capa final - Consumption
 En este punto, como operación final a aplicar sobre los datos, generaremos una versión agregada de la tabla _FactInternetSales_, llamada _FactSalesSummary_. 
 
 Las operaciones realizadas están disponibles en el notebook [Demo_Fabric_Consumption] (https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Demo_Fabric_Consumption.ipynb)
@@ -322,6 +322,7 @@ df_dim_sales_territory.write.format("delta").mode("overwrite").option("mergeSche
 En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric":
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/5afa6523-9fa7-43af-836b-ab6892c55c1d)
 
+## Paso 5: Creación del modelo semántico en Power BI
 
 
 
