@@ -373,12 +373,12 @@ En esta pestaña se puede observar lo siguiente:
 
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/f7217122-7d33-4eb3-a98d-5b4a8daf1b5a)
 
-Durante la creación del Lakehouse, Microsoft Fabric crea de forma automática un SQL end point (sólo lectura) al que poder conectarse y contra el que ejecutar queries para leer información de los datos. En el mismo, hay tres pestañas disponibles (esquina inferior izquierda):
+Durante la creación del Lakehouse, Microsoft Fabric crea de forma automática un SQL end point (solo lectura) al que poder conectarse y contra el que ejecutar queries para leer información de los datos. En el mismo, hay tres pestañas disponibles (esquina inferior izquierda):
 - Datos: Visualización de los datos disponibles.
 - Consulta: Desarrollo de queries SQL para realizar consultas sobre los datos.
 - Modelo: Construcción del modelo semántico de Power BI para ser usado en la generación de informes.
 
-Para pasar a establecer las relaciones entre nuestras tablas, haremos click en **Creación de informes -> Administrar modelo semántico predeterminado**. En este apartado, estableremos las relaciones entre nuestras tablas, de acuerdo a la cardinalidad con la que se encuentren relacionadas, por lo tanto, crearemos:
+Para pasar a establecer las relaciones entre nuestras tablas, haremos clic en **Creación de informes -> Administrar modelo semántico predeterminado**. En este apartado, estableceremos las relaciones entre nuestras tablas, de acuerdo a la cardinalidad con la que se encuentren relacionadas, por lo tanto, crearemos:
 - Relación 1:N entre ***dim_date*** y ***fact_internet_sales*** mediante los campos DateKey y OrderDateKey.
 - Relación 1:N entre ***dim_product*** y ***fact_internet_sales*** mediante el campo Product_Key.
 - Relación 1:N entre ***dim_sales_territory*** y ***fact_internet_sales*** mediante el campo Sales_Territory_Key.
