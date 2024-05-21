@@ -3,8 +3,8 @@ Bienvenidos a la Demo de Microsoft Fabric. Este README.md describe los pasos seg
 
 Para el ejercicio escogido, **simularemos la existencia de una tienda online de bicicletas, "Bluetab Bikes"**. Desde Dirección, se ha solicitado al equipo de Analítica de Datos que desarrolle un **dashboard en Power BI que permita analizar las ventas de las bicicletas por Región**. Además, quieren que la **solución sea abordada mediante Microsoft Fabric**.
 
-En concreto, **se desea dar respuesta a las siguiente preguntas**:
-- ¿Cuál fue el Pais con más ventas en el año 2014?
+En concreto, **se desea dar respuesta a las siguientes preguntas**:
+- ¿Cuál fue el País con más ventas en el año 2014?
 - En este país, ¿cuál fue la Región con más ventas y qué producto produjo mayor volumen de negocio?
 - Para el segundo país con mayor volumen de negocio, ¿coinciden los productos más vendidos con los del país anterior?
 - Para el año 2013, en Europa, ¿cuál es el mejor periodo para la venta de bicicletas? ¿A qué podría deberse este motivo?
