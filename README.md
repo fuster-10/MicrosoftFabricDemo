@@ -10,21 +10,26 @@ En concreto, **se desea dar respuesta a las siguiente preguntas**:
 - Para el año 2013, en Europa, ¿cuál es el mejor periodo para la venta de bicicletas? ¿A qué podría deberse este motivo?
 
 ## Paso 1: Origen de datos (operacional)
-Para simular los datos disponibles en el operacional, partiremos de la BBDD disponible en el siguiente repositorio de Microsoft [AdventureWorks](
+Para simular los datos disponibles en el operacional, partiremos de la BBDD disponible en el siguiente repositorio de Microsoft [AdventureWorksDW](
 https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/adventure-works/data-warehouse-install-script)
 
 Donde las archivos que utilizaremos serán:
-- DimProduct.csv (Dimensión)
-- DimDate.csv (Dimensión)
-- DimSalesTerritory.csv (Dimensión)
-- DimCustomer.csv (Dimensión)
-- FactInternetSales.csv (Hecho)
+- DimProduct.csv - Dimensión producto
+- DimDate.csv - Dimensión calendario
+- DimSalesTerritory.csv - Dimensión territorio
+- DimCustomer.csv - Dimensión cliente
+- FactInternetSales.csv - Hechos, venta de bicicletas
 
 ## Paso 2: Ingesta inicial de los datos
 Como parte de las buenas prácticas dentro de Fabric para realizar la ingesta, se recomienda aplicar una operación de "Copy data" con un Pipeline de Data Factory para generar una extracción inicial de los datos, desde el origen a nuestro Lakehouse. Esto generará una copia inicial de los datos en la capa de RAW siguiendo la metodología definida en la arquitectura "Medallion".
 
-El Pipeline desarrollado para realizar esta acción, se encuentra ubicado en la siguiente dirección (desafortunadamente, no se puede visualiazar el contenido del pipeline sin tener acceso al worksapce. En caso de querer conocer más detealle, por favor, contactadme por privado):
-https://app.fabric.microsoft.com/groups/61830d7c-c332-46d5-95d3-249737c2e475/pipelines/d673ab56-e5d7-4996-aa02-913107e44561?experience=data-engineering
+El Pipeline desarrollado para realizar esta acción tiene el siguiente aspecto:
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/168e054c-9c18-4c75-9f30-57e76944495f)
+
+Los pasos llevados a cabo son:
+1. Paso 1
+2. Paso 2
+
 
 ## Paso 3: Capa intermedia - Curated
 En esta fase, se aplicarán unas sencillas tranformaciones a los datos usando PySpark. Las mismas están disponibles en el notebook Demo_Fabric_Curated (https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Demo_Fabric_Curated.ipynb)
