@@ -40,18 +40,20 @@ Los pasos llevados a cabo en el Pipeline anterior son:
      
 2. Entramos en bucle For-Each, donde dentro:
    1. Realizamos operación Copy data para el primero de los elementos de la lista.
-   2. Guardamos elemento en el LakeHouse con el nombre definido en la segunda lista.
+   2. Guardamos elemento en el LakeHouse con el nombre definido en la segunda lista en formato _.parquet_.
    3. Modificamos variables para la siguiente iteración del proceso.
 
 
 ## Paso 3: Capa intermedia - Curated
-En esta fase, se aplicarán unas sencillas tranformaciones a los datos usando PySpark. Las mismas están disponibles en el notebook Demo_Fabric_Curated (https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Demo_Fabric_Curated.ipynb)
+En esta fase, se aplicarán unas sencillas tranformaciones a los datos usando PySpark. Las mismas están disponibles en el notebook [Demo_Fabric_Curated](https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Jupyter%20Notebooks/Demo_Fabric_Curated.ipynb).
 
 En resumen, las transformaciones aplicadas en este punto son:
 - Seleccion de campos deseados de cada fichero.
-- Conversión al tipo de dato correcto.
+- Conversión de campos al tipo de dato correcto.
 - Generación de columnas calculadas para determinadas entidades.
 - Guardado de cada fichero transformado en formato _.parquet_ en la capa CURATED.
+
+A continuación, se muestran las operaciones realizadas:
   
 ### Importación inicial de funciones
 ```python
@@ -240,31 +242,37 @@ print ("Fact Sales transformada y guardada")
 ## Paso 4: Capa final - Consumption
 En este punto, como operación final a aplicar sobre los datos, generaremos una versión agregada de la tabla _FactInternetSales_, llamada _FactSalesSummary_. 
 
-Las operaciones realizadas están disponibles en el notebook [Demo_Fabric_Consumption] (https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Demo_Fabric_Consumption.ipynb)
+Las operaciones realizadas están disponibles en el notebook [Demo_Fabric_Consumption](https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Jupyter%20Notebooks/Demo_Fabric_Consumption.ipynb).
 
 Nuestra tabla _FactInternetSales_ contiene los siguientes campos:
-- ProductKey: integer.
-- OrderDateKey: integer.
-- DueDateKey: integer.
-- ShipDateKey: integer.
-- CustomerKey: integer.
-- CurrencyKey: integer.
-- SalesTerritoryKey: integer.
-- SalesOrderNumber: string.
-- OrderQuantity: integer.
-- UnitPrice: double.
-- TotalSales: double.
 
-Con la agregación realizada, pasaremos a disponer de la siguiente tabla:
-- ProductKey: integer.
-- CustomerKey: integer.
-- SalesTerritoryKey: integer.
-- OrderYear: integer.
-- OrderMonth: integer.
-- TotalSalesAmount: double (sum('TotalSales')).
-- TotalItems: long (sum('OrderQuantity')).
-- TotalOrders: long (countDistinct('SalesOrderNumber')).
-- DateKey: integer.
+| Campo              | Tipo de dato  |
+| -------------      | ------------- |
+| ProductKey         | integer       |
+| OrderDateKey       | integer       |
+| DueDateKey         | integer       |
+| ShipDateKey        | integer       |
+| CustomerKey        | integer       |
+| CurrencyKey        | integer       |
+| SalesTerritoryKey  | integer       |
+| SalesOrderNumber   | string        | 
+| OrderQuantity      | integer       |
+| UnitPrice          | double        |
+| TotalSales         | double        |
+
+Con la agregación realizada, pasaremos a disponer de la siguiente tabla, _FactSalesSummary_:
+
+| Campo              | Tipo de dato  |
+| -------------      | ------------- |
+| ProductKey         | integer       |
+| CustomerKey        | integer       |
+| SalesTerritoryKey  | integer       |
+| OrderYear          | integer       | 
+| OrderMonth         | integer       |
+| TotalSalesAmount   | double        |
+| TotalItems         | long          |
+| TotalOrders        | long          |
+| DateKey            |               |
 
 Es decir, pasaremos de tener el detalle de nuestras ventas online, determinadas por el campo _SalesOrderNumber_, a disponer de una tabla agregada a nivel de _ProductKey_, _CustomerKey_, _SalesTerritoryKey_, _OrderYear_, y _OrderMonth_. Además, se crearán las tablas deltas correspondientes a cada una de las entidades tratadas. 
 
@@ -343,26 +351,30 @@ df_dim_date.write.format("delta").mode("overwrite").option("mergeSchema", "true"
 df_dim_product.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_product")
 df_dim_sales_territory.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_sales_territory")
 ```
-En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric":
+En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric" (denotadas por el icono del triángulo):
+
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/5afa6523-9fa7-43af-836b-ab6892c55c1d)
 
 ## Paso 5: Creación del modelo semántico en Power BI
-Enhorabuena, ya estamos cerca de poder finalizar nuestro proyecto y reportar a la Dirección la información que nos había solicitado. Sólo queda un último punto antes de poder comenzar a desarrollar nuestra informe de Power BI: *Construir el modeo semántico*. Esto es posible, debido a que ya tenemos en disposición las tablas finales con las que poder construir el modelo de datos a usar en el dashboard. Sin embargo, para abordar esta operación podemos optar por dos alternativas:
+
+Enhorabuena, ya estamos cerca de poder finalizar nuestro proyecto y poder reportar la información solicitada. Sólo queda un último punto antes de poder comenzar a desarrollar nuestra informe de Power BI: *Construir el modeo semántico*. Esto es posible, debido a que ya tenemos en disposición las tablas finales con las que poder construir el modelo de datos a usar en el dashboard. Sin embargo, para abordar esta operación podemos optar por dos alternativas:
 - Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
 - Opción 2: Definición de las relaciones del modelo semántico a través Power BI Desktop.
 
-Como buena práctica, es recomendable el uso de la opción 1. No obstante, la opción 2, es posible y será explicada en la siguiente demo.
+Como buena práctica, es recomendable el uso de la opción 1, ya que garantiza una mayor resuabilidad. No obstante, la opción 2, es posible y también será explicada.
+
 ### Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
+
 Par ello, accederemos a la opción "Punto de conexión de análisis SQL":
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/394fcfe5-f950-4407-b2bc-c7558e74a4d5)
 
 En esta pestaña se puede observar lo siguiente:
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/f7217122-7d33-4eb3-a98d-5b4a8daf1b5a)
 
-Tras la creación de las tabla delta, Microsoft Fabric crea de forma automática un SQL end point (sólo lectura) al que poder conectarte y realizar queries a los datos generados. Hay tres pestañas disponibles:
-- Datos: Visualizamos los datos disponibles.
-- Consulta: Escribimos consultas a los datos.
-- Modelo: Construimos el modelo semántico de Power BI.
+Durante la creación del Lakehouse, Microsoft Fabric crea de forma automática un SQL end point (sólo lectura) al que poder conectarse y contra el que ejecutar queries para leer información de los datos. En el mismo, hay tres pestañas disponibles (esquina inferior izquierda):
+- Datos: Visualización de los datos disponibles.
+- Consulta: Desarrollo de queries SQL para realizar consultas sobre los datos.
+- Modelo: Construcción del modelo semántico de Power BI para ser usado en la generación de informes.
 
 Para pasar a establecer las relaciones entre nuestras tablas, haremos click en Creación de informes -> Administrar modelo semántico predeterminado. En este apartado, estableremos las relaciones entre nuestras tablas, de acuerdo a la cardinalidad con la que se encuentren relacionadas, por lo tanto, crearemos:
 - Relación 1:N entre dim_date y fact_internet_sales mediante los campos DateKey y OrderDateKey.
