@@ -397,7 +397,7 @@ En este punto, estamos en virtud de desarrollar nuestro informe de Power BI.
 
 ## Paso 6: Desarrollo del Dashboard en Power BI
 
-A continuación, pasaremos a desarrollar los informes en base al modelo semántico construido. Podríamos partir de cero y crear reportes de la nada desde el servicio o facilitar a usuarios de negocio la conexión al modelo de datos para creación de autoservicios. No obstante, como nuestros requerimientos son claros vamos a optar por la generación de un Dashboard de Power BI para cubrir nuestras necesidades.
+A continuación, pasaremos a desarrollar los informes basándonos en el modelo semántico construido. Podríamos partir de cero y crear reportes de la nada desde el servicio o facilitar a usuarios de negocio la conexión al modelo de datos para creación de autoservicios. No obstante, como nuestros requerimientos son claros vamos a optar por la generación de un Dashboard de Power BI para cubrir nuestras necesidades.
 
 Para ello, seguiremos los siguientes pasos:
 1. Selección del origen de datos:
@@ -411,7 +411,7 @@ Para ello, seguiremos los siguientes pasos:
 
 ¡¡Y ya habríamos finalizado!! Enhorabuena por haber llegado hasta aquí porque eso quiere decir que ya hemos conseguido completar nuestros desarrollos (o mejor dicho, ¡qué lástima! con lo bien que nos lo estábamos pasando... :( )
 
-Ya sólo quedaría usar el dashboard para dar respuesta a las peticiones de dirección.
+Ya solo quedaría usar el dashboard para dar respuesta a las peticiones de dirección.
 
 ## Paso 7: Contestando a las preguntas de Dirección
 
