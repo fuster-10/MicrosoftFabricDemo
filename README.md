@@ -366,9 +366,11 @@ Como buena práctica, es recomendable el uso de la opción 1, ya que garantiza u
 ### Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
 
 Par ello, accederemos a la opción "Punto de conexión de análisis SQL":
+
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/394fcfe5-f950-4407-b2bc-c7558e74a4d5)
 
 En esta pestaña se puede observar lo siguiente:
+
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/f7217122-7d33-4eb3-a98d-5b4a8daf1b5a)
 
 Durante la creación del Lakehouse, Microsoft Fabric crea de forma automática un SQL end point (sólo lectura) al que poder conectarse y contra el que ejecutar queries para leer información de los datos. En el mismo, hay tres pestañas disponibles (esquina inferior izquierda):
