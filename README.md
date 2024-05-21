@@ -397,14 +397,14 @@ En este punto, estamos en virtud de desarrollar nuestro informe de Power BI.
 
 ## Paso 6: Desarrollo del Dashboard en Power BI
 
-En este punto, ya se podrían crear informes en base al modelo semántico construido. Podríamos partir de cero y crear reportes de la nada o facilitar a usuarios de negocio la conexión al modelo para crear un autoservicio. No obstante, nuestros requerimientos son claros, por lo que vamos a optar por la generación de un Dashboard de Power BI para cubrir nuestras necesidades.
+A continuación, pasaremos a desarrollar los informes en base al modelo semántico construido. Podríamos partir de cero y crear reportes de la nada desde el servicio o facilitar a usuarios de negocio la conexión al modelo de datos para creación de autoservicios. No obstante, como nuestros requerimientos son claros vamos a optar por la generación de un Dashboard de Power BI para cubrir nuestras necesidades.
 
 Para ello, seguiremos los siguientes pasos:
 1. Selección del origen de datos:
    1. Abrimos un nuevo archivo desde Power BI desktop.
    2. Seleccionamos la opción "Get Data" y "Power BI Datasets" (opciones disponibles para Power BI en Inglés).
    3. Seleccionamos la desarrollada para la demo, "Demo_Fabric".
-2. Esperamos a que se genere una conexión en vivo a nuestro modelo de datos (aparecerá abajo a la derecha como "Connected live to the Power BI dataset: Nombre".
+2. Esperamos a que se genere una conexión en vivo a nuestro modelo de datos (aparecerá abajo a la derecha como "Connected live to the Power BI dataset: Nombre del modelo semántico".
 3. Guardamos el archivo con el nombre "Bluetab Bikes" en nuestro directorio de trabajo deseado.
 4. En este punto, ya tendríamos todo lo necesario para generar las gráficas de nuestro informe. No obstante, esta parte va a ser obviada en la presentación por el tiempo que conlleva. En su lugar mostraremos el informe finalizado.
 5. Una vez finalizados los desarrollos, publicamos el informe en el workspace deseado.
