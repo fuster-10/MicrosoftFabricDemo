@@ -24,6 +24,7 @@ Donde las archivos que utilizaremos serán:
 Como parte de las buenas prácticas dentro de Fabric para realizar la ingesta, se recomienda aplicar una operación de "Copy data" con un Pipeline de Data Factory para generar una extracción inicial de los datos, desde el origen a nuestro Lakehouse. Esto generará una copia inicial de los datos en la capa de RAW siguiendo la metodología definida en la arquitectura "Medallion".
 
 El Pipeline desarrollado para realizar esta acción tiene el siguiente aspecto:
+
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/168e054c-9c18-4c75-9f30-57e76944495f)
 
 Los pasos llevados a cabo en el Pipeline anterior son:
