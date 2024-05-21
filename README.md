@@ -378,7 +378,7 @@ Durante la creación del Lakehouse, Microsoft Fabric crea de forma automática u
 - Consulta: Desarrollo de queries SQL para realizar consultas sobre los datos.
 - Modelo: Construcción del modelo semántico de Power BI para ser usado en la generación de informes.
 
-Para pasar a establecer las relaciones entre nuestras tablas, haremos click en Creación de informes -> Administrar modelo semántico predeterminado. En este apartado, estableremos las relaciones entre nuestras tablas, de acuerdo a la cardinalidad con la que se encuentren relacionadas, por lo tanto, crearemos:
+Para pasar a establecer las relaciones entre nuestras tablas, haremos click en **Creación de informes -> Administrar modelo semántico predeterminado**. En este apartado, estableremos las relaciones entre nuestras tablas, de acuerdo a la cardinalidad con la que se encuentren relacionadas, por lo tanto, crearemos:
 - Relación 1:N entre dim_date y fact_internet_sales mediante los campos DateKey y OrderDateKey.
 - Relación 1:N entre dim_product y fact_internet_sales mediante el campo Product_Key.
 - Relación 1:N entre dim_sales_territory y fact_internet_sales mediante el campo Sales_Territory_Key.
@@ -388,6 +388,32 @@ Para pasar a establecer las relaciones entre nuestras tablas, haremos click en C
 - Relación 1:N entre dim_sales_territory y fact_summary mediante el campo Sales_Territory_Key.
 - Relación 1:N entre dim_customer y fact_summary mediante el campo Customer_Key.
 
+El resultado final es el siguiente:
+
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/232ceda8-c866-4378-b667-79778ffcee9e)
+
+En el mismo se puede observar que nuestro modelo consta de cuatro tablas de dimensión y dos tablas de hechos (una detallada y otra agregada).
+En este punto, estamos en virtud de desarrollar nuestro informe de Power BI.
+
+## Paso 6: Desarrollo del Dashboard en Power BI
+
+En este punto, ya se podrían crear informes en base al modelo semántico construido. Podríamos partir de cero y crear reportes de la nada o facilitar a usuarios de negocio la conexión al modelo para crear un autoservicio. No obstante, nuestros requerimientos son claros, por lo que vamos a optar por la generación de un Dashboard de Power BI para cubrir nuestras necesidades.
+
+Para ello, seguiremos los siguientes pasos:
+1. Selección del origen de datos:
+   1. Abrimos un nuevo archivo desde Power BI desktop.
+   2. Seleccionamos la opción "Get Data" y "Power BI Datasets" (opciones disponibles para Power BI en Inglés).
+   3. Seleccionamos la desarrollada para la demo, "Demo_Fabric".
+2. Esperamos a que se genere una conexión en vivo a nuestro modelo de datos (aparecerá abajo a la derecha como "Connected live to the Power BI dataset: Nombre".
+3. Guardamos el archivo con el nombre "Bluetab Bikes" en nuestro directorio de trabajo deseado.
+4. En este punto, ya tendríamos todo lo necesario para generar las gráficas de nuestro informe. No obstante, esta parte va a ser obviada en la presentación por el tiempo que conlleva. En su lugar mostraremos el informe finalizado.
+5. Una vez finalizados los desarrollos, publicamos el informe en el workspace deseado.
+
+¡¡Y ya habríamos finalizado!! Enhorabuena por haber llegado hasta aquí porque eso quiere decir que ya hemos conseguido completar nuestros desarrollos (o mejor dicho, ¡qué lástima! con lo bien que nos lo estábamos pasando... :( )
+
+Ya sólo quedaría usar el dashboard para dar respuesta a las peticiones de dirección.
+
+## Paso 7: Contestando a las preguntas de Dirección
 
 
 
