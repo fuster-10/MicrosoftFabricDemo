@@ -13,7 +13,7 @@ En concreto, **se desea dar respuesta a las siguientes preguntas**:
 Para simular los datos disponibles en el operacional, partiremos de la BBDD disponible en el siguiente repositorio de Microsoft [AdventureWorksDW](
 https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/adventure-works/data-warehouse-install-script).
 
-Donde las archivos que utilizaremos serán:
+Donde los archivos que utilizaremos serán:
 - DimProduct.csv - Dimensión producto
 - DimDate.csv - Dimensión calendario
 - DimSalesTerritory.csv - Dimensión territorio
