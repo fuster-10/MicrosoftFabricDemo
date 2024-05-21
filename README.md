@@ -37,7 +37,7 @@ Los pasos llevados a cabo en el Pipeline anterior son:
      ["DimProduct.parquet","DimCustomer.parquet","DimSalesTerritory.parquet","DimDate.parquet","FactInternetSales.parquet"]
      ```
      
-3. Entramos en bucle For-Each
+2. Entramos en bucle For-Each, donde dentro:
    1. Realizamos operación Copy data para el primero de los elementos de la lista.
    2. Guardamos elemento en el LakeHouse con el nombre definido en la segunda lista.
    3. Modificamos variables para la siguiente iteración del proceso.
