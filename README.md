@@ -26,9 +26,14 @@ Como parte de las buenas prácticas dentro de Fabric para realizar la ingesta, s
 El Pipeline desarrollado para realizar esta acción tiene el siguiente aspecto:
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/168e054c-9c18-4c75-9f30-57e76944495f)
 
-Los pasos llevados a cabo son:
-1. Paso 1
-2. Paso 2
+Los pasos llevados a cabo en el Pipeline anterior son:
+1. Inicializamos variables para la gestión del proceso:
+   - Archivos de entrada: ["DimProduct.csv","DimCustomer.csv","DimSalesTerritory.csv","DimDate.csv","FactInternetSales.csv"]
+   - Archivos de salida: ["DimProduct.parquet","DimCustomer.parquet","DimSalesTerritory.parquet","DimDate.parquet","FactInternetSales.parquet"]
+3. Entramos en bucle For-Each
+   1. Realizamos operación Copy data para el primero de los elementos de la lista.
+   2. Guardamos elemento en el LakeHouse con el nombre definido en la segunda lista.
+   3. Modificamos variables para la siguiente iteración del proceso.
 
 
 ## Paso 3: Capa intermedia - Curated
