@@ -45,10 +45,10 @@ Los pasos llevados a cabo en el Pipeline anterior son:
 
 
 ## Paso 3: Capa intermedia - Curated
-En esta fase, se aplicarán unas sencillas tranformaciones a los datos usando PySpark. Las mismas están disponibles en el notebook [Demo_Fabric_Curated](https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Jupyter%20Notebooks/Demo_Fabric_Curated.ipynb).
+En esta fase, se aplicarán unas sencillas transformaciones a los datos usando PySpark. Las mismas están disponibles en el notebook [Demo_Fabric_Curated](https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Jupyter%20Notebooks/Demo_Fabric_Curated.ipynb).
 
 En resumen, las transformaciones aplicadas en este punto son:
-- Seleccion de campos deseados de cada fichero.
+- Selección de campos deseados de cada fichero.
 - Conversión de campos al tipo de dato correcto.
 - Generación de columnas calculadas para determinadas entidades.
 - Guardado de cada fichero transformado en formato _.parquet_ en la capa CURATED.
