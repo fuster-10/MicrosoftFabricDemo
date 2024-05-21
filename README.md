@@ -357,11 +357,11 @@ En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric"
 
 ## Paso 5: Creación del modelo semántico en Power BI
 
-Enhorabuena, ya estamos cerca de poder finalizar nuestro proyecto y poder reportar la información solicitada. Sólo queda un último punto antes de poder comenzar a desarrollar nuestra informe de Power BI: *Construir el modeo semántico*. Esto es posible, debido a que ya tenemos en disposición las tablas finales con las que poder construir el modelo de datos a usar en el dashboard. Sin embargo, para abordar esta operación podemos optar por dos alternativas:
+Enhorabuena, ya estamos cerca de poder finalizar nuestro proyecto y poder reportar la información solicitada. Solo queda un último punto antes de poder comenzar a desarrollar nuestra informe de Power BI: *Construir el modelo semántico*. Esto es posible, debido a que ya tenemos en disposición las tablas finales con las que poder construir el modelo de datos a usar en el dashboard. Sin embargo, para abordar esta operación podemos optar por dos alternativas:
 - Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
 - Opción 2: Definición de las relaciones del modelo semántico a través Power BI Desktop.
 
-Como buena práctica, es recomendable el uso de la opción 1, ya que garantiza una mayor resuabilidad. No obstante, la opción 2, es posible y también será explicada.
+Como buena práctica, es recomendable el uso de la opción 1, ya que garantiza una mayor reusabilidad. No obstante, la opción 2, es posible y también será explicada.
 
 ### Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
 
