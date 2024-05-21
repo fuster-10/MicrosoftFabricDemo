@@ -379,14 +379,14 @@ Durante la creación del Lakehouse, Microsoft Fabric crea de forma automática u
 - Modelo: Construcción del modelo semántico de Power BI para ser usado en la generación de informes.
 
 Para pasar a establecer las relaciones entre nuestras tablas, haremos click en **Creación de informes -> Administrar modelo semántico predeterminado**. En este apartado, estableremos las relaciones entre nuestras tablas, de acuerdo a la cardinalidad con la que se encuentren relacionadas, por lo tanto, crearemos:
-- Relación 1:N entre dim_date y fact_internet_sales mediante los campos DateKey y OrderDateKey.
-- Relación 1:N entre dim_product y fact_internet_sales mediante el campo Product_Key.
-- Relación 1:N entre dim_sales_territory y fact_internet_sales mediante el campo Sales_Territory_Key.
-- Relación 1:N entre dim_customer y fact_internet_sales mediante el campo Customer_Key.
-- Relación 1:N entre dim_date y fact_summary mediante el campo DateKey.
-- Relación 1:N entre dim_product y fact_summary mediante el campo Product_Key.
-- Relación 1:N entre dim_sales_territory y fact_summary mediante el campo Sales_Territory_Key.
-- Relación 1:N entre dim_customer y fact_summary mediante el campo Customer_Key.
+- Relación 1:N entre ***dim_date*** y ***fact_internet_sales*** mediante los campos DateKey y OrderDateKey.
+- Relación 1:N entre ***dim_product*** y ***fact_internet_sales*** mediante el campo Product_Key.
+- Relación 1:N entre ***dim_sales_territory*** y ***fact_internet_sales*** mediante el campo Sales_Territory_Key.
+- Relación 1:N entre ***dim_customer*** y ***fact_internet_sales*** mediante el campo Customer_Key.
+- Relación 1:N entre ***dim_date*** y ***fact_summary mediante*** el campo DateKey.
+- Relación 1:N entre ***dim_product*** y ***fact_summary*** mediante el campo Product_Key.
+- Relación 1:N entre ***dim_sales_territory*** y ***fact_summary*** mediante el campo Sales_Territory_Key.
+- Relación 1:N entre ***dim_customer*** y ***fact_summary*** mediante el campo Customer_Key.
 
 El resultado final es el siguiente:
 
