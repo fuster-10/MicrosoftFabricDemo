@@ -1,0 +1,86 @@
+
+// FactSalesSummary
+let
+  Origen = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/61830d7c-c332-46d5-95d3-249737c2e475/fe75465a-14f3-406b-b5e8-1a17a61cbc78/Files/CONSUMPTION"),
+  #"Filas filtradas" = Table.SelectRows(Origen, each Text.Contains([Folder Path], "FactSalesSummary")),
+  #"Filas filtradas 1" = Table.SelectRows(#"Filas filtradas", each ([Extension] = ".parquet")),
+  #"Elegir columnas" = Table.SelectColumns(#"Filas filtradas 1", {"Content"}),
+  #"Archivos ocultos filtrados" = Table.SelectRows(#"Elegir columnas", each [Attributes]?[Hidden]? <> true),
+  #"Invocar función personalizada" = Table.AddColumn(#"Archivos ocultos filtrados", "Transformar archivo (6)", each #"Transformar archivo (6)"([Content])),
+  #"Se han quitado otras columnas." = Table.SelectColumns(#"Invocar función personalizada", {"Transformar archivo (6)"}),
+  #"Columna de tabla expandida" = Table.ExpandTableColumn(#"Se han quitado otras columnas.", "Transformar archivo (6)", Table.ColumnNames(#"Transformar archivo (6)"(#"Archivo de ejemplo (6)"))),
+  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Columna de tabla expandida", {{"ProductKey", Int64.Type}, {"CustomerKey", Int64.Type}, {"SalesTerritoryKey", Int64.Type}, {"OrderYear", Int64.Type}, {"OrderMonth", Int64.Type}, {"TotalSalesAmount", type number}, {"TotalItems", type number}, {"TotalOrders", type number}, {"DateKey", Int64.Type}})
+in
+  #"Tipo de columna cambiado"
+
+// FactInternetSales
+let
+  Origen = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/61830d7c-c332-46d5-95d3-249737c2e475/fe75465a-14f3-406b-b5e8-1a17a61cbc78/Files/CONSUMPTION"),
+  #"Filas filtradas" = Table.SelectRows(Origen, each Text.Contains([Folder Path], "FactInternetSales")),
+  #"Filas filtradas 1" = Table.SelectRows(#"Filas filtradas", each ([Extension] = ".parquet")),
+  #"Elegir columnas" = Table.SelectColumns(#"Filas filtradas 1", {"Content"}),
+  #"Archivos ocultos filtrados" = Table.SelectRows(#"Elegir columnas", each [Attributes]?[Hidden]? <> true),
+  #"Invocar función personalizada" = Table.AddColumn(#"Archivos ocultos filtrados", "Transformar archivo (5)", each #"Transformar archivo (5)"([Content])),
+  #"Se han quitado otras columnas." = Table.SelectColumns(#"Invocar función personalizada", {"Transformar archivo (5)"}),
+  #"Columna de tabla expandida" = Table.ExpandTableColumn(#"Se han quitado otras columnas.", "Transformar archivo (5)", Table.ColumnNames(#"Transformar archivo (5)"(#"Archivo de ejemplo (5)"))),
+  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Columna de tabla expandida", {{"ProductKey", Int64.Type}, {"OrderDateKey", Int64.Type}, {"DueDateKey", Int64.Type}, {"ShipDateKey", Int64.Type}, {"CustomerKey", Int64.Type}, {"CurrencyKey", Int64.Type}, {"SalesTerritoryKey", Int64.Type}, {"SalesOrderNumber", type text}, {"OrderQuantity", Int64.Type}, {"UnitPrice", type number}, {"TotalSales", type number}})
+in
+  #"Tipo de columna cambiado"
+
+// DimCustomer
+let
+  Origen = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/61830d7c-c332-46d5-95d3-249737c2e475/fe75465a-14f3-406b-b5e8-1a17a61cbc78/Files/CONSUMPTION"),
+  #"Filas filtradas" = Table.SelectRows(Origen, each Text.Contains([Folder Path], "DimCustomer")),
+  #"Filas filtradas 1" = Table.SelectRows(#"Filas filtradas", each ([Extension] = ".parquet")),
+  #"Elegir columnas" = Table.SelectColumns(#"Filas filtradas 1", {"Content"}),
+  #"Archivos ocultos filtrados" = Table.SelectRows(#"Elegir columnas", each [Attributes]?[Hidden]? <> true),
+  #"Invocar función personalizada" = Table.AddColumn(#"Archivos ocultos filtrados", "Transformar archivo", each #"Transformar archivo"([Content])),
+  #"Se han quitado otras columnas." = Table.SelectColumns(#"Invocar función personalizada", {"Transformar archivo"}),
+  #"Columna de tabla expandida" = Table.ExpandTableColumn(#"Se han quitado otras columnas.", "Transformar archivo", Table.ColumnNames(#"Transformar archivo"(#"Archivo de ejemplo"))),
+  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Columna de tabla expandida", {{"CustomerKey", Int64.Type}, {"FirstName", type text}, {"LastName", type text}, {"BirthDate", type date}, {"CivilState", type text}, {"Gender", type text}, {"YearlyIncome", Int64.Type}, {"FullName", type text}, {"Age", type number}})
+in
+  #"Tipo de columna cambiado"
+  
+// DimDate
+let
+  Origen = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/61830d7c-c332-46d5-95d3-249737c2e475/fe75465a-14f3-406b-b5e8-1a17a61cbc78/Files/CONSUMPTION"),
+  #"Filas filtradas" = Table.SelectRows(Origen, each Text.Contains([Folder Path], "DimDate")),
+  #"Filas filtradas 1" = Table.SelectRows(#"Filas filtradas", each ([Extension] = ".parquet")),
+  #"Elegir columnas" = Table.SelectColumns(#"Filas filtradas 1", {"Content"}),
+  #"Archivos ocultos filtrados" = Table.SelectRows(#"Elegir columnas", each [Attributes]?[Hidden]? <> true),
+  #"Invocar función personalizada" = Table.AddColumn(#"Archivos ocultos filtrados", "Transformar archivo (2)", each #"Transformar archivo (2)"([Content])),
+  #"Se han quitado otras columnas." = Table.SelectColumns(#"Invocar función personalizada", {"Transformar archivo (2)"}),
+  #"Columna de tabla expandida" = Table.ExpandTableColumn(#"Se han quitado otras columnas.", "Transformar archivo (2)", Table.ColumnNames(#"Transformar archivo (2)"(#"Archivo de ejemplo (2)"))),
+  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Columna de tabla expandida", {{"DateKey", Int64.Type}, {"Date", type date}, {"WeekDayNumber", Int64.Type}, {"WeekDayName", type text}, {"MonthDayNumber", Int64.Type}, {"MonthName", type text}, {"MonthNumber", Int64.Type}, {"YearNumber", Int64.Type}})
+in
+  #"Tipo de columna cambiado"
+
+
+
+// DimProduct
+let
+  Origen = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/61830d7c-c332-46d5-95d3-249737c2e475/fe75465a-14f3-406b-b5e8-1a17a61cbc78/Files/CONSUMPTION"),
+  #"Filas filtradas" = Table.SelectRows(Origen, each Text.Contains([Folder Path], "DimProduct")),
+  #"Filas filtradas 1" = Table.SelectRows(#"Filas filtradas", each ([Extension] = ".parquet")),
+  #"Elegir columnas" = Table.SelectColumns(#"Filas filtradas 1", {"Content"}),
+  #"Archivos ocultos filtrados" = Table.SelectRows(#"Elegir columnas", each [Attributes]?[Hidden]? <> true),
+  #"Invocar función personalizada" = Table.AddColumn(#"Archivos ocultos filtrados", "Transformar archivo (3)", each #"Transformar archivo (3)"([Content])),
+  #"Se han quitado otras columnas." = Table.SelectColumns(#"Invocar función personalizada", {"Transformar archivo (3)"}),
+  #"Columna de tabla expandida" = Table.ExpandTableColumn(#"Se han quitado otras columnas.", "Transformar archivo (3)", Table.ColumnNames(#"Transformar archivo (3)"(#"Archivo de ejemplo (3)"))),
+  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Columna de tabla expandida", {{"ProductKey", Int64.Type}, {"ProductName", type text}})
+in
+  #"Tipo de columna cambiado"
+
+// DimSalesTerritory
+let
+  Origen = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/61830d7c-c332-46d5-95d3-249737c2e475/fe75465a-14f3-406b-b5e8-1a17a61cbc78/Files/CONSUMPTION"),
+  #"Filas filtradas" = Table.SelectRows(Origen, each Text.Contains([Folder Path], "DimSalesTerritory")),
+  #"Filas filtradas 1" = Table.SelectRows(#"Filas filtradas", each ([Extension] = ".parquet")),
+  #"Elegir columnas" = Table.SelectColumns(#"Filas filtradas 1", {"Content"}),
+  #"Archivos ocultos filtrados" = Table.SelectRows(#"Elegir columnas", each [Attributes]?[Hidden]? <> true),
+  #"Invocar función personalizada" = Table.AddColumn(#"Archivos ocultos filtrados", "Transformar archivo (4)", each #"Transformar archivo (4)"([Content])),
+  #"Se han quitado otras columnas." = Table.SelectColumns(#"Invocar función personalizada", {"Transformar archivo (4)"}),
+  #"Columna de tabla expandida" = Table.ExpandTableColumn(#"Se han quitado otras columnas.", "Transformar archivo (4)", Table.ColumnNames(#"Transformar archivo (4)"(#"Archivo de ejemplo (4)"))),
+  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Columna de tabla expandida", {{"SalesTerritoryKey", Int64.Type}, {"SalesTerritoryRegion", type text}, {"SalesTerritoryCountry", type text}, {"SalesTerritoryGroup", type text}})
+in
+  #"Tipo de columna cambiado"
