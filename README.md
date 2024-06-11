@@ -389,6 +389,14 @@ En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric"
 
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/5afa6523-9fa7-43af-836b-ab6892c55c1d)
 
+Tras la realización de este punto, recapitulamos los pasos seguidos:
+1. Ingesta da datos - Pipeline Data Factory.
+2. Transformaciones iniciales - Jupyter Notebook.
+3. Creación de la tabla agregada - Spark Job.
+4. Creación de las tablas delta - Dataflow.
+
+Estos cuatro pasos mostrados, representan los distintos medios de procesamiento de datos disponibles en Fabric. Una vez comprobado el correcto funcionamiento de cada uno de los pasos del proceso, se puede definir un elemento de orquestación principal. Una posibilidad sería la creación de un Pipeline de Data Factory que lanzara cada uno de los pasos mostrados anteriormente.
+
 ## Paso 6: Creación del modelo semántico en Power BI
 
 Enhorabuena, ya estamos cerca de poder finalizar nuestro proyecto y poder reportar la información solicitada. Solo queda un último punto antes de poder comenzar a desarrollar nuestra informe de Power BI: *Construir el modelo semántico*. Esto es posible, debido a que ya tenemos en disposición las tablas finales con las que poder construir el modelo de datos a usar en el dashboard. Sin embargo, para abordar esta operación podemos optar por dos alternativas:
