@@ -401,15 +401,9 @@ Estos cuatro pasos mostrados, representan los distintos medios de procesamiento 
 
 ## Paso 6: Creación del modelo semántico en Power BI
 
-Enhorabuena, ya estamos cerca de poder finalizar nuestro proyecto y poder reportar la información solicitada. Solo queda un último punto antes de poder comenzar a desarrollar nuestra informe de Power BI: *Construir el modelo semántico*. Esto es posible, debido a que ya tenemos en disposición las tablas finales con las que poder construir el modelo de datos a usar en el dashboard. Sin embargo, para abordar esta operación podemos optar por dos alternativas:
-- Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
-- Opción 2: Definición de las relaciones del modelo semántico a través Power BI Desktop.
+Enhorabuena, ya estamos cerca de poder finalizar nuestro proyecto y poder reportar la información solicitada. Solo queda un último punto antes de poder comenzar a desarrollar nuestra informe de Power BI: *Construir el modelo semántico*. Esto es posible, debido a que ya tenemos en disposición las tablas finales con las que poder construir el modelo de datos a usar en el dashboard. 
 
-Como buena práctica, es recomendable el uso de la opción 1, ya que garantiza una mayor reusabilidad. No obstante, la opción 2, es posible y también será explicada.
-
-### Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
-
-Par ello, accederemos a la opción "Punto de conexión de análisis SQL":
+Para ello, accederemos a la opción "Punto de conexión de análisis SQL":
 
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/394fcfe5-f950-4407-b2bc-c7558e74a4d5)
 
@@ -417,7 +411,7 @@ En esta pestaña se puede observar lo siguiente:
 
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/f7217122-7d33-4eb3-a98d-5b4a8daf1b5a)
 
-Durante la creación del Lakehouse, Microsoft Fabric crea de forma automática un SQL end point (solo lectura) al que poder conectarse y contra el que ejecutar queries para leer información de los datos. En el mismo, hay tres pestañas disponibles (esquina inferior izquierda):
+Durante la creación del Lakehouse, Microsoft Fabric disponibiliza de forma automática un SQL end point (solo lectura) al que poder conectarse y contra el que ejecutar queries de lectura. En el mismo, hay tres pestañas disponibles (esquina inferior izquierda):
 - Datos: Visualización de los datos disponibles.
 - Consulta: Desarrollo de queries SQL para realizar consultas sobre los datos.
 - Modelo: Construcción del modelo semántico de Power BI para ser usado en la generación de informes.
@@ -458,6 +452,11 @@ Para ello, seguiremos los siguientes pasos:
 Ya solo quedaría usar el dashboard para dar respuesta a las peticiones de dirección.
 
 ## Paso 7: Contestando a las preguntas de Dirección
+
+## Información adicional
+En este apartado se comentarán otras opciones de interés que no han sido mencionadas debido a la limitación de tiempo de la demo.
+
+### Configruación de las relaciones del modelo de datos a través de Power BI Desktop
 
 
 
