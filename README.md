@@ -411,7 +411,7 @@ En esta pestaña se puede observar lo siguiente:
 
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/f7217122-7d33-4eb3-a98d-5b4a8daf1b5a)
 
-Durante la creación del Lakehouse, Microsoft Fabric disponibiliza de forma automática un SQL end point (solo lectura) al que poder conectarse y contra el que ejecutar queries de lectura. En el mismo, hay tres pestañas disponibles (esquina inferior izquierda):
+Durante la creación del Lakehouse, Microsoft Fabric disponibiliza de forma automática un SQL end point (solo lectura) al que poder conectarse y contra el que ejecutar queries. En el mismo, hay tres pestañas disponibles (esquina inferior izquierda):
 - Datos: Visualización de los datos disponibles.
 - Consulta: Desarrollo de queries SQL para realizar consultas sobre los datos.
 - Modelo: Construcción del modelo semántico de Power BI para ser usado en la generación de informes.
