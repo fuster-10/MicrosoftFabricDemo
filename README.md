@@ -242,7 +242,9 @@ print ("Fact Sales transformada y guardada")
 ## Paso 4: Capa final - Consumption
 En este punto, como operación final a aplicar sobre los datos, generaremos una versión agregada de la tabla _FactInternetSales_, llamada _FactSalesSummary_. 
 
-Las operaciones realizadas están disponibles en el notebook [Demo_Fabric_Consumption](https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Jupyter%20Notebooks/Demo_Fabric_Consumption.ipynb).
+Las operaciones realizadas están disponibles en el script [Demo_Fabric_Consumption](https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Jupyter%20Notebooks/Demo_Fabric_Consumption.py).
+
+Esta fase será realizada a través de un Spark Job.
 
 Nuestra tabla _FactInternetSales_ contiene los siguientes campos:
 
@@ -280,6 +282,23 @@ Es decir, pasaremos de tener el detalle de nuestras ventas online, determinadas 
 ```python
 from pyspark.sql.types import *
 from pyspark.sql.functions import concat, lit, datediff, current_date, when, col, substring, sum, length, countDistinct
+import sys
+import os
+#import Constant
+from pyspark.sql import SparkSession
+from pyspark.conf import SparkConf
+```
+### Definición de la Spark Session
+```python
+#Spark session builder
+    spark = (SparkSession
+          .builder
+          .appName("example") 
+          .config("spark.some.config.option", "some-value")
+          .getOrCreate())
+    
+    spark_context = spark.sparkContext
+    spark_context.setLogLevel("DEBUG")
 ```
 ### FactSalesSummary
 ```python
@@ -342,6 +361,28 @@ df_dim_sales_territory = spark.read.format("parquet").load("Files/CURATED/DimSal
 df_dim_sales_territory.write.mode("overwrite").parquet('Files/CONSUMPTION/DimSalesTerritory.parquet')
 print ("DimSalesTerritory guardada en capa CONSUMPTION")
 ```
+
+## Paso 5: Creación de las tablas deltas
+
+Esta operación será realizada por medio de un dataflow. Para cada una de las entidades del modelo, seleccionaremos como origen de datos Azure Data Lake Storage Gen 2, y filtraremos el nombre del archivo parquet para que corresponda con el que fue escrito en la fase previa del proceso.
+
+El código de Power Query para la creación de la tabla delta correspondiente a **DimCustomer** sería:
+
+```python
+let
+  Origen = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/61830d7c-c332-46d5-95d3-249737c2e475/fe75465a-14f3-406b-b5e8-1a17a61cbc78/Files/CONSUMPTION"),
+  #"Filas filtradas" = Table.SelectRows(Origen, each Text.Contains([Folder Path], "DimCustomer")),
+  #"Filas filtradas 1" = Table.SelectRows(#"Filas filtradas", each ([Extension] = ".parquet")),
+  #"Elegir columnas" = Table.SelectColumns(#"Filas filtradas 1", {"Content"}),
+  #"Archivos ocultos filtrados" = Table.SelectRows(#"Elegir columnas", each [Attributes]?[Hidden]? <> true),
+  #"Invocar función personalizada" = Table.AddColumn(#"Archivos ocultos filtrados", "Transformar archivo", each #"Transformar archivo"([Content])),
+  #"Se han quitado otras columnas." = Table.SelectColumns(#"Invocar función personalizada", {"Transformar archivo"}),
+  #"Columna de tabla expandida" = Table.ExpandTableColumn(#"Se han quitado otras columnas.", "Transformar archivo", Table.ColumnNames(#"Transformar archivo"(#"Archivo de ejemplo"))),
+  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Columna de tabla expandida", {{"CustomerKey", Int64.Type}, {"FirstName", type text}, {"LastName", type text}, {"BirthDate", type date}, {"CivilState", type text}, {"Gender", type text}, {"YearlyIncome", Int64.Type}, {"FullName", type text}, {"Age", type number}})
+in
+  #"Tipo de columna cambiado"
+```
+
 ### Creación de las tablas delta
 ```python
 df_fact_summary.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("fact_summary")
@@ -355,7 +396,7 @@ En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric"
 
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/5afa6523-9fa7-43af-836b-ab6892c55c1d)
 
-## Paso 5: Creación del modelo semántico en Power BI
+## Paso 6: Creación del modelo semántico en Power BI
 
 Enhorabuena, ya estamos cerca de poder finalizar nuestro proyecto y poder reportar la información solicitada. Solo queda un último punto antes de poder comenzar a desarrollar nuestra informe de Power BI: *Construir el modelo semántico*. Esto es posible, debido a que ya tenemos en disposición las tablas finales con las que poder construir el modelo de datos a usar en el dashboard. Sin embargo, para abordar esta operación podemos optar por dos alternativas:
 - Opción 1: Definición de las relaciones del modelo semántico desde el servicio de Power BI.
