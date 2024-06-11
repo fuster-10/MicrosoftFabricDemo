@@ -382,16 +382,9 @@ let
 in
   #"Tipo de columna cambiado"
 ```
+El código completo asociado a este paso se encuentra en:
+[Creación de deltas con dataflows](https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Jupyter%20Notebooks/Delta%20Creation.txt)
 
-### Creación de las tablas delta
-```python
-df_fact_summary.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("fact_summary")
-df_fact_internet_sales.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("fact_internet_sales")
-df_dim_customer.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_customer")
-df_dim_date.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_date")
-df_dim_product.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_product")
-df_dim_sales_territory.write.format("delta").mode("overwrite").option("mergeSchema", "true").saveAsTable("dim_sales_territory")
-```
 En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric" (denotadas por el icono del triángulo):
 
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/5afa6523-9fa7-43af-836b-ab6892c55c1d)
