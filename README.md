@@ -435,7 +435,21 @@ En este punto, estamos en virtud de desarrollar nuestro informe de Power BI.
 
 ## Paso 6: Desarrollo del Dashboard en Power BI
 
-A continuación, pasaremos a desarrollar los informes basándonos en el modelo semántico construido. Podríamos partir de cero y crear reportes de la nada desde el servicio o facilitar a usuarios de negocio la conexión al modelo de datos para creación de autoservicios. No obstante, como nuestros requerimientos son claros vamos a optar por la generación de un Dashboard de Power BI para cubrir nuestras necesidades.
+A continuación, pasaremos a desarrollar los informes basándonos en el modelo semántico construido. Aquí exsiten dos posibilidades. La primera, es que Fabric puede generar de manera automática informes basándose en los datos disponibles en el modelo. En la segunda opción, un desarrollador de Power BI estaría encargado de realizar estos desarrollos en base los requerimientos. Como el propósito de esta demo es demostrar la cantidad de cosas que se pueden hacer con Fabric, exploraremos ambas alternativas.
+
+
+### Opción 1: Generación automática de informes a través de la capacidad de Fabric
+Para que Fabric genere de forma automática informes por ti, sigue los siguientes pasos:
+1. Haz clic sobre su modelo de datos.
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/e32b5c1d-fa73-4549-a389-35dbc9d99ddc)
+2. Selecciona la opción "Cración automática de un informe:
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/22180caa-2f85-450a-b319-c19c6f5d95b1)
+
+¡Eh voilà! ¡¡Fabric acaba de generar de manera automática un informe de Power BI para nostoros!!
+
+Esta puede ser una buena opción en caso de querer realizar una exploración inicial en los datos. Sin embargo, como punto importante a comentasr, esta funcionalidad no tiene nada que ver con "Copilot". Esto es simplemente una de las muchas funcionalidades que dispone Fabric. 
+
+### Opción 2: Desarrollo del informe de Power BI por un desarrollador
 
 Para ello, seguiremos los siguientes pasos:
 1. Selección del origen de datos:
