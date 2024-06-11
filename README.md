@@ -395,7 +395,7 @@ Tras la realización de este punto, recapitulamos los pasos seguidos:
 3. Creación de la tabla agregada - Spark Job.
 4. Creación de las tablas delta - Dataflow.
 
-Estos cuatro pasos mostrados, representan los distintos tipos de artefactos para el procesamiento de datos disponibles en Fabric. Una vez comprobado el correcto funcionamiento de cada uno de los pasos del proceso, se puede definir un elemento de orquestación principal. Una posibilidad sería la creación de un Pipeline de Data Factory que lanzara cada uno de los pasos mostrados anteriormente.
+Estos cuatro pasos mostrados, representan los distintos tipos de artefactos para el procesamiento de datos disponibles en Fabric. Una vez comprobado el correcto funcionamiento de cada uno de ellos, se puede definir un elemento de orquestación principal. Una posibilidad sería la creación de un Pipeline de Data Factory que lanzara los elementos de la arquitectura medallion secuencialmente.
 
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/32162ae5-0a7a-4dcd-9d6c-bb017b30e861)
 
