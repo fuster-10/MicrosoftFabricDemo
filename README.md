@@ -38,7 +38,7 @@ Los pasos llevados a cabo en el Pipeline anterior son:
      ["DimProduct.parquet","DimCustomer.parquet","DimSalesTerritory.parquet","DimDate.parquet","FactInternetSales.parquet"]
      ```
      
-2. Entramos en bucle For-Each, donde dentro:
+2. Entramos en bucle For-Each, donde:
    1. Realizamos operación Copy data para cad elemento de la lista _Archivos de entrada_.
    2. Guardamos cada elemento en el LakeHouse en formato _.parquet_ con el nombre definido en la lista _Archivos de salida_.
    3. Modificamos variables para la siguiente iteración del proceso.
