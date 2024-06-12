@@ -451,7 +451,7 @@ Para que Fabric genere de forma automática informes por ti, sigue los siguiente
 
 ¡Eh voilà! ¡¡Fabric acaba de generar de manera automática un informe de Power BI para nostoros!!
 
-Esta puede ser una buena opción en caso de querer realizar una exploración inicial en los datos. Sin embargo, como punto importante a comentasr, esta funcionalidad no tiene nada que ver con "Copilot". Esto es simplemente una de las muchas funcionalidades que dispone Fabric. 
+Esta puede ser una buena opción en caso de querer realizar una exploración inicial en los datos. Sin embargo, como punto importante a comentar, esta funcionalidad no tiene nada que ver con "Copilot". Esto es simplemente una de las muchas funcionalidades disponibles en Fabric. 
 
 ### Opción 2: Desarrollo del informe de Power BI por un desarrollador
 
