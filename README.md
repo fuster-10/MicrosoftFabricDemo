@@ -366,7 +366,7 @@ print ("DimSalesTerritory guardada en capa CONSUMPTION")
 
 Esta operación será realizada por medio de un dataflow. Para cada una de las entidades del modelo, seleccionaremos como origen de datos Azure Data Lake Storage Gen 2, y filtraremos el nombre del archivo parquet para que corresponda con el que fue escrito en la fase previa del proceso.
 
-El código de Power Query para la creación de la tabla delta correspondiente a **DimCustomer** sería:
+El código de Power Query para la creación de la tabla delta correspondiente a **DimCustomer** es:
 
 ```python
 let
