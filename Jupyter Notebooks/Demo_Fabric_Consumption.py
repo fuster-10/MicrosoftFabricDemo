@@ -1,21 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# ## Demo_Oscar_Consumption
+#  Demo_Fabric_Consumption
+#
+# Capa Consumption - Procesamiento de datos
 # 
-# New notebook
-
-# # Capa Consumption - Procesamiento de datos
-# 
-# A continuación, leeremos los distintos ficheros de la capa anterior y aplicamos las trasnformaciones oportunas. 
-# 
-# Los archivos a procesar son:
-# - FactInternetSales
-# 
-# En esta capa lo único que haremos es copiar los ficheros procesados en la capa anterior, crear un fichero adicional **_FactSalesSummary_** y crearemos las tablas deltas de todos los ficheros.
-
-# In[41]:
-
 
 
 from pyspark.sql.types import *
