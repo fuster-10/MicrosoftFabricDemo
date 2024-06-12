@@ -383,7 +383,7 @@ in
   #"Tipo de columna cambiado"
 ```
 El código completo asociado a este paso se encuentra en:
-[Creación de deltas con dataflows](https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Jupyter%20Notebooks/Delta%20Creation.txt)
+[Creación de deltas con dataflows](https://github.com/fuster-10/MicrosoftFabricDemo/blob/main/Jupyter%20Notebooks/Delta%20Creation.txt).
 
 En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric" (denotadas por el icono del triángulo):
 
