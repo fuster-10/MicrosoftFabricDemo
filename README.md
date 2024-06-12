@@ -389,7 +389,7 @@ En este punto, disponemos de nuestras tablas delta en el Lakehouse "Demo Fabric"
 
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/5afa6523-9fa7-43af-836b-ab6892c55c1d)
 
-Tras la realización de este punto, recapitulamos los pasos seguidos:
+En este punto, recapitulamos los pasos seguidos:
 1. Ingesta da datos - Pipeline Data Factory.
 2. Transformaciones iniciales - Jupyter Notebook.
 3. Creación de la tabla agregada - Spark Job.
