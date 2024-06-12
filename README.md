@@ -21,7 +21,7 @@ Donde los archivos que utilizaremos serán:
 - FactInternetSales.csv - Hechos, venta de bicicletas
 
 ## Paso 2: Ingesta inicial de los datos
-Como parte de las buenas prácticas dentro de Fabric para realizar la ingesta, se recomienda aplicar una operación de "Copy data" con un Pipeline de Data Factory para generar una extracción inicial de los datos, desde el origen a nuestro Lakehouse. Esto generará una copia inicial de los datos en la capa de RAW siguiendo la metodología definida en la arquitectura "Medallion".
+Como parte de las buenas prácticas dentro de Fabric para realizar la ingesta, se recomienda aplicar una operación de "Copy data" con un Pipeline de Data Factory para generar una extracción inicial de los datos, desde el origen a nuestro Lakehouse. Esto generará una copia inicial de los datos en la capa de RAW siguiendo la metodología definida en la arquitectura "Medallion" (_RAW_, _CURATED_ y _CONSUMPTION_).
 
 El Pipeline desarrollado para realizar esta acción tiene el siguiente aspecto:
 
@@ -276,7 +276,7 @@ Con la agregación realizada, pasaremos a disponer de la siguiente tabla, _FactS
 | TotalOrders        | long          |
 | DateKey            | integer       |
 
-Es decir, pasaremos de tener el detalle de nuestras ventas online, determinadas por el campo _SalesOrderNumber_, a disponer de una tabla agregada a nivel de _ProductKey_, _CustomerKey_, _SalesTerritoryKey_, _OrderYear_, y _OrderMonth_. 
+Es decir, pasaremos de tener el detalle de nuestras ventas online, determinadas por el campo _SalesOrderNumber_, a disponer de una tabla agregada a nivel de _ProductKey_, _CustomerKey_, _SalesTerritoryKey_, _OrderYear_, y _OrderMonth_. Además, crearemos el fichero correspondiente al resto de entidades en la capa _CONSUMPTION_.
 
 ### Importación inicial de funciones
 ```python
