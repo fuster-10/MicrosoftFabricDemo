@@ -1,7 +1,6 @@
+#
 #  Demo_Fabric_Consumption
 #
-# Capa Consumption - Procesamiento de datos
-# 
 
 
 from pyspark.sql.types import *
