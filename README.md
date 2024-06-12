@@ -29,18 +29,18 @@ El Pipeline desarrollado para realizar esta acción tiene el siguiente aspecto:
 
 Los pasos llevados a cabo en el Pipeline anterior son:
 1. Inicializamos variables para la gestión del proceso:
-   - Archivos de entrada:
+   - _Archivos de entrada_:
      ```python
      ["DimProduct.csv","DimCustomer.csv","DimSalesTerritory.csv","DimDate.csv","FactInternetSales.csv"]
      ```
-   - Archivos de salida:
+   - _Archivos de salida_:
      ```python
      ["DimProduct.parquet","DimCustomer.parquet","DimSalesTerritory.parquet","DimDate.parquet","FactInternetSales.parquet"]
      ```
      
 2. Entramos en bucle For-Each, donde dentro:
-   1. Realizamos operación Copy data para el primero de los elementos de la lista.
-   2. Guardamos elemento en el LakeHouse con el nombre definido en la segunda lista en formato _.parquet_.
+   1. Realizamos operación Copy data para cad elemento de la lista _Archivos de entrada_.
+   2. Guardamos cada elemento en el LakeHouse en formato _.parquet_ con el nombre definido en la lista _Archivos de salida_.
    3. Modificamos variables para la siguiente iteración del proceso.
 
 
