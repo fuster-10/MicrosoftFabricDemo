@@ -440,10 +440,13 @@ A continuación, pasaremos a desarrollar los informes basándonos en el modelo s
 
 ### Opción 1: Generación automática de informes a través de la capacidad de Fabric
 Para que Fabric genere de forma automática informes por ti, sigue los siguientes pasos:
+
 1. Haz clic sobre su modelo de datos:
+
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/e32b5c1d-fa73-4549-a389-35dbc9d99ddc)
 
 2. Selecciona la opción "Cración automática de un informe:
+
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/22180caa-2f85-450a-b319-c19c6f5d95b1)
 
 ¡Eh voilà! ¡¡Fabric acaba de generar de manera automática un informe de Power BI para nostoros!!
