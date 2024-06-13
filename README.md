@@ -472,7 +472,7 @@ Ya solo quedaría usar el dashboard para dar respuesta a las peticiones de direc
 ## Paso 7: Contestando a las preguntas de Dirección
 
 - ¿Cuál fue el País con más ventas en el año 2014? USA.
-![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/addad0b7-6331-4a77-828a-d5e801534c09)
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/959fdd0a-4fc5-48bb-9aee-5f9edd29c93b)
 
 - En este país, ¿cuál fue la Región con más ventas y qué producto produjo mayor volumen de negocio?
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/1ba63a59-3a04-4727-a3a1-bf1fc5de4750)
