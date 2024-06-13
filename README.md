@@ -471,10 +471,17 @@ Ya solo quedaría usar el dashboard para dar respuesta a las peticiones de direc
 
 ## Paso 7: Contestando a las preguntas de Dirección
 
-## Información adicional
-En este apartado se comentarán otras opciones de interés que no han sido mencionadas debido a la limitación de tiempo de la demo.
+- ¿Cuál fue el País con más ventas en el año 2014? USA.
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/addad0b7-6331-4a77-828a-d5e801534c09)
 
-### Configruación de las relaciones del modelo de datos a través de Power BI Desktop
+- En este país, ¿cuál fue la Región con más ventas y qué producto produjo mayor volumen de negocio?
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/1ba63a59-3a04-4727-a3a1-bf1fc5de4750)
+
+- Para el segundo país con mayor volumen de negocio, ¿coinciden los productos más vendidos con los del país anterior?
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/c399d270-7352-4964-923e-936a69e5855f)
+
+- Para el año 2013, en Europa, ¿cuál es el mejor periodo para la venta de bicicletas? ¿A qué podría deberse este motivo?
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/1b1e3584-163b-417e-8558-4b4bd77b5a7b)
 
 
 
