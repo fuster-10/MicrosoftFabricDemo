@@ -13,8 +13,11 @@ En concreto, **se desea dar respuesta a las siguientes preguntas**:
 - RAW (Ingesta de datos): Data Factory Pipeline.
 - CURARTED: Jupyter Notebook.
 - CONSUMPTION:
--    Spark Job.
--    Creación deltas: Dataflows.
+   * Spark Job.
+   * Creación deltas: Dataflows.
+
+Las creación de deltas podría ser abordada dentro del Spark Job, pero se utilizan dataflows para ejemplificar todas las opciones disponibles de procesamiento de datos.
+
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/4d1453a6-fc7e-4a31-83fb-9e335b855bf7)
 
 
