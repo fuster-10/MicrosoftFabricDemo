@@ -445,7 +445,7 @@ El resultado final es el siguiente:
 En el mismo se puede observar que nuestro modelo consta de cuatro tablas de dimensión y dos tablas de hechos (una detallada y otra agregada).
 En este punto, estamos en virtud de desarrollar nuestro informe de Power BI.
 
-## Paso 6: Desarrollo del Dashboard en Power BI
+## Paso 7: Desarrollo del Dashboard en Power BI
 
 A continuación, pasaremos a desarrollar los informes basándonos en el modelo semántico construido. Aquí existen dos posibilidades. La primera, es que Fabric puede generar de manera automática informes basándose en los datos disponibles en el modelo. En la segunda opción, un desarrollador de Power BI estaría encargado de realizar estos desarrollos en base los requerimientos. Como el propósito de esta demo es demostrar la cantidad de cosas que se pueden hacer con Fabric, exploraremos ambas alternativas.
 
@@ -481,7 +481,7 @@ Para ello, seguiremos los siguientes pasos:
 
 Ya solo quedaría usar el dashboard para dar respuesta a las peticiones de dirección.
 
-## Paso 7: Contestando a las preguntas de Dirección
+## Paso 8: Contestando a las preguntas de Dirección
 
 - ¿Cuál fue el País con más ventas en el año 2014? USA.
   
