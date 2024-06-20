@@ -10,6 +10,11 @@ En concreto, **se desea dar respuesta a las siguientes preguntas**:
 - Para el año 2013, en Europa, ¿cuál es el mejor periodo para la venta de bicicletas? ¿A qué podría deberse este motivo?
 
 ## Paso 0: Definición de la arquitectura:
+- RAW (Ingesta de datos): Data Factory Pipeline.
+- CURARTED: Jupyter Notebook.
+- CONSUMPTION:
+- Spark Job.
+- Creación deltas: Dataflows.
 ![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/4d1453a6-fc7e-4a31-83fb-9e335b855bf7)
 
 
