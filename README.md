@@ -9,6 +9,10 @@ En concreto, **se desea dar respuesta a las siguientes preguntas**:
 - Para el segundo país con mayor volumen de negocio, ¿coinciden los productos más vendidos con los del país anterior?
 - Para el año 2013, en Europa, ¿cuál es el mejor periodo para la venta de bicicletas? ¿A qué podría deberse este motivo?
 
+## Paso 0: Definición de la arquitectura:
+![image](https://github.com/fuster-10/MicrosoftFabricDemo/assets/29040162/4d1453a6-fc7e-4a31-83fb-9e335b855bf7)
+
+
 ## Paso 1: Origen de datos (operacional)
 Para simular los datos disponibles en el operacional, partiremos de la BBDD disponible en el siguiente repositorio de Microsoft [AdventureWorksDW](
 https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/adventure-works/data-warehouse-install-script).
